@@ -1,0 +1,21 @@
+{
+  "name": "squidphony-mini",
+  "version": "1.0.0",
+  "description": "AI-powered ambient music driven by squid detection — Squidphony Mini",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google/genai": "^1.41.0",
+    "@magenta/music": "^1.23.1",
+    "@tensorflow/tfjs": "^4.22.0",
+    "tone": "^14.7.77"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vite": "^6.1.0"
+  }
+}

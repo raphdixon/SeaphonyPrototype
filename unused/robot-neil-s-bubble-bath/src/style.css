@@ -1,0 +1,99 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  color: #222;
+}
+
+.background {
+  transition: opacity 0.6s ease;
+  opacity: 0;
+}
+.background.current {
+  opacity: 1;
+}
+.background.morning {
+  background: #eee;
+  background: linear-gradient(to right, #d9a7c7, #fffcdc);
+}
+.background.evening {
+  background: #222;
+  background: linear-gradient(to right, #000000, #53346d);
+}
+
+.background,
+.grid,
+.points {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  height: 100%;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/969699/ring_cursor_dark.png) 12.5 12.5, auto;
+}
+.evening .grid {
+  cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/969699/ring_cursor_light.png) 12.5 12.5, auto;
+}
+.points {
+  pointer-events: none;
+}
+
+.key {
+  flex: 1;
+}
+
+.controls {
+  position: fixed;
+  left: calc(50% - 150px);
+  width: 300px;
+  bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+.controls button {
+  width: 150px;
+  font-size: 16px;
+  padding: 10px 20px;
+  background: none;
+  color: #222;
+  opacity: 0.8;
+  border: 2px solid rgba(255, 255, 255, 0);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.controls button:hover {
+  border-color: #f3f3f3;
+}
+.controls button.current {
+  background-color: #f3f3f3;
+  color: #222;
+}
+.evening .controls button {
+  color: #f3f3f3;
+}
+.evening .controls button.current {
+  color: #222;
+}
+
+.loading-message,
+.intro-message {
+  position: absolute;
+  top: calc(50% - 14px);
+  left: 0;
+  width: 100%;
+  font-size: 28px;
+  text-align: center;
+  font-style: italic;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}

@@ -1,0 +1,15 @@
+{
+    // Seaphony Lyria WebSocket Proxy
+    // Transparent relay that injects the API key server-side
+    "name": "seaphony-proxy",
+    "main": "src/index.ts",
+    "compatibility_date": "2025-01-01",
+    "compatibility_flags": [
+        "nodejs_compat"
+    ],
+    // Allowed frontend origins for CORS
+    "vars": {
+        "ALLOWED_ORIGINS": "https://seaphony.pages.dev,http://localhost:5173"
+    }
+    // Secret: GOOGLE_API_KEY — set via `wrangler secret put GOOGLE_API_KEY`
+}

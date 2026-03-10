@@ -1,0 +1,8 @@
+name = "squid-assets"
+main = "src/worker.ts"
+compatibility_date = "2024-09-23"
+account_id = "d6e4a78417c0a7896014f89996036ba9"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "squid"

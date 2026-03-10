@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+.wrangler/
+
+# Build output
+dist/
+.next/
+out/
+build/
+
+# Environment files (contain API keys)
+.env
+.env.*
+.env.local
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+*.pem
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Large media/model files
+*.mp4
+*.mov
+*.onnx
+*.pb
+*.pt
+
+# Misc
+*.tsbuildinfo
+next-env.d.ts
+.vercel

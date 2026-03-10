@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Squidphony — AI Music × Squid Detection</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦑</text></svg>" />
+  <meta name="description"
+    content="Ambient music powered by AI squid detection. Squids trigger notes on a musical grid as they swim through the Monterey Bay Aquarium." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;700&family=Google+Sans+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-logo">
+        <div class="logo-squid">🦑</div>
+        <h1 class="logo-title">Squidphony</h1>
+        <p class="logo-subtitle">An AI enabled squid orchestra performs a generative sea sonata</p>
+      </div>
+      <div class="loading-progress">
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <p id="loading-status" class="loading-status">Initializing…</p>
+      </div>
+      <div id="mode-selector" class="mode-selector" style="display:none;">
+        <p class="mode-label">Choose your experience</p>
+        <div class="mode-buttons">
+          <button id="mode-local" class="mode-button" data-mode="local">
+            <span class="mode-tier">Squidphony Flash</span>
+            <span class="mode-icon">💻</span>
+            <span class="mode-name">Local</span>
+            <span class="mode-desc">Offline AI • Runs on-device</span>
+          </button>
+          <button id="mode-cloud" class="mode-button" data-mode="cloud">
+            <span class="mode-tier">Squidphony Pro</span>
+            <span class="mode-icon">☁️</span>
+            <span class="mode-name">Cloud</span>
+            <span class="mode-desc">Lyria Realtime • Genre mixing</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Experience -->
+  <div id="experience" class="experience hidden">
+    <!-- Video Layer -->
+    <video id="video" crossorigin="anonymous" loop muted playsinline></video>
+
+    <!-- Canvas Overlay (Grid + Detections + Particles) -->
+    <canvas id="overlay"></canvas>
+
+    <!-- Genre Quadrant Overlay (Cloud mode only) -->
+    <div id="genre-overlay" class="genre-overlay hidden">
+      <div class="genre-quadrant genre-tl">
+        <div class="genre-info">
+          <span class="genre-label">Lofi Beats</span>
+          <div class="genre-slider">
+            <div class="genre-slider-fill" data-quadrant="0"></div>
+          </div>
+          <span class="genre-pct" data-quadrant-pct="0">25%</span>
+        </div>
+      </div>
+      <div class="genre-quadrant genre-tr">
+        <div class="genre-info">
+          <span class="genre-label">Ambient</span>
+          <div class="genre-slider">
+            <div class="genre-slider-fill" data-quadrant="1"></div>
+          </div>
+          <span class="genre-pct" data-quadrant-pct="1">25%</span>
+        </div>
+      </div>
+      <div class="genre-quadrant genre-bl">
+        <div class="genre-info">
+          <span class="genre-label">Piano</span>
+          <div class="genre-slider">
+            <div class="genre-slider-fill" data-quadrant="2"></div>
+          </div>
+          <span class="genre-pct" data-quadrant-pct="2">25%</span>
+        </div>
+      </div>
+      <div class="genre-quadrant genre-br">
+        <div class="genre-info">
+          <span class="genre-label">Choral Choir</span>
+          <div class="genre-slider">
+            <div class="genre-slider-fill" data-quadrant="3"></div>
+          </div>
+          <span class="genre-pct" data-quadrant-pct="3">25%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status HUD -->
+    <div id="hud" class="hud">
+      <div class="hud-item" id="hud-detection">
+        <span class="hud-dot"></span>
+        <span>CV: <span id="hud-fps">0</span> FPS</span>
+      </div>
+      <div class="hud-item" id="hud-music">
+        <span class="hud-dot active"></span>
+        <span>Music: <span id="hud-music-status">Ready</span></span>
+      </div>
+      <div class="hud-item" id="hud-squids">
+        <span>🦑 <span id="hud-squid-count">0</span></span>
+      </div>
+    </div>
+
+    <!-- DJ Changeover Indicator (bottom-left, cloud mode) -->
+    <div id="changeover-indicator" class="changeover-indicator">DJ changeover</div>
+
+    <!-- Branding -->
+    <div class="branding">
+      <span class="brand-title">Squidphony</span>
+    </div>
+  </div>
+
+  <!-- Polyfill Node.js `global` for @magenta/music's CJS dependencies -->
+  <!-- MUST be a regular script (not module) and BEFORE main.ts -->
+  <script>window.global = window;</script>
+  <script type="module" src="./src/main.ts"></script>
+</body>
+
+</html>
